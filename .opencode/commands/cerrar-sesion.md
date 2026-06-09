@@ -1,19 +1,23 @@
 ---
-description: Cierra sesión de trabajo — deduce aprendizajes, decisiones y siguiente paso de la conversación actual
-agent: gentle-orchestrator
-subtask: true
+description: Cierra sesión de trabajo — deduce logros, decisiones y aprendizajes de la conversación
 ---
 
-Ejecuta el protocolo de cierre de sesión del proyecto:
-
-1. **Analiza la conversación de esta sesión** y deduce automáticamente:
-   - Aprendizajes nuevos o conceptos tocados → guárdalos en Engram (`topic_key: learning/log`).
-   - Decisiones tomadas → guárdalas en Engram (`topic_key: decisions/registro`).
+1. **Analiza la conversación de esta sesión** y deduce:
    - Trabajo completado.
-   - Siguiente paso recomendado para la próxima sesión.
+   - Decisiones nuevas (si las hay).
+   - Aprendizajes nuevos o estados que cambiaron en LEARNING.md.
+   - Siguiente paso recomendado.
 
-2. Guarda el resumen de sesión en Engram vía `mem_session_summary`.
+2. **Presenta un resumen al desarrollador** con los cambios propuestos. Ejemplo:
 
-3. **Presenta el resumen al desarrollador para confirmación** antes de finalizar.
+   ```
+   MEMORY.md → agregar entrada al historial + actualizar estado/objetivo
+   DECISIONS.md → + DEC-006 (si aplica)
+   LEARNING.md → [tema]: Pendiente → Aplicado (si aplica)
+   ```
 
-No preguntes "¿qué aprendiste?" ni "¿qué decidimos?". Dedúcelo de las interacciones del chat.
+3. **Espera confirmación del desarrollador** antes de escribir cualquier archivo. Puede ajustar, agregar o descartar cambios.
+
+4. Solo después de la aprobación, actualiza MEMORY.md, DECISIONS.md y/o LEARNING.md según lo acordado.
+
+No guardes nada automáticamente. No uses Engram. Todo se escribe en archivos planos del repo.

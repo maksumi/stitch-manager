@@ -1,15 +1,10 @@
 ---
-description: Inicia sesión de trabajo — propone objetivo basado en memoria de sesiones anteriores
-agent: gentle-orchestrator
-subtask: true
+description: Inicia sesión de trabajo — lee MEMORY.md y propone objetivo basado en el estado actual
 ---
 
-Ejecuta el protocolo de inicio de sesión del proyecto:
-
 1. Lee AGENT.md (metodología de trabajo vigente).
-2. Consulta Engram: `mem_context(project: "{project}")` para contexto de sesiones anteriores.
-3. Si existe un `Next Steps` en la sesión previa, úsalo para **proponer** el objetivo de esta sesión.
-4. Si no hay sesiones previas, verifica el estado del proyecto (archivos, cambios pendientes) y propone el siguiente paso lógico.
-5. Preséntalo al desarrollador como propuesta: "Basado en la sesión anterior, el siguiente paso es **[X]**. ¿Arrancamos?".
+2. Lee MEMORY.md (estado actual, objetivo y siguiente paso del proyecto).
+3. Con base en el "Siguiente paso" de MEMORY.md, propón un objetivo concreto para esta sesión.
+4. Preséntalo al desarrollador: "Basado en MEMORY.md, el siguiente paso es **[X]**. ¿Arrancamos?".
 
-No preguntes "¿qué vamos a hacer hoy?". Siempre propón.
+No preguntes "¿qué vamos a hacer hoy?". Siempre propón basado en el estado del proyecto. Si necesitas más contexto (DECISIONS.md, LEARNING.md), léelos solo si es relevante para la sesión.
