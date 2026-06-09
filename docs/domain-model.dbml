@@ -1,0 +1,131 @@
+// Stitch Manager — Domain Model
+// DBML v3.0 (dbdiagram.io)
+
+Table client {
+  id serial [pk]
+  name varchar
+  address varchar
+  rfc varchar
+  phone varchar
+  email varchar
+
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table logo {
+  id serial [pk]
+  client_id int [ref: > client.id, not null]
+  name varchar
+  stitch_count int
+
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table order {
+  id serial [pk]
+  folio int [unique, not null]
+  client_id int [ref: > client.id, not null]
+  status order_status [default: 'creada']
+  date_authorized date
+  date_delivery date
+  date_received date
+
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table line_item {
+  id serial [pk]
+  order_id int [ref: > order.id, not null]
+  logo_id int [ref: > logo.id]
+  garment_type varchar
+  garment_provider garment_provider
+  garment_color varchar
+  quantity int
+  logo_status logo_status
+  logo_position varchar
+  embroidery_color varchar
+  embroidery_type varchar
+  stitch_count int
+  notes text
+
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table user {
+  id serial [pk]
+  full_name varchar
+  phone varchar
+  email varchar [unique]
+  password_hash varchar
+  role user_role
+
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table machine {
+  id serial [pk]
+  name varchar [unique]
+}
+
+Table production_record {
+  id serial [pk]
+  line_item_id int [ref: > line_item.id, not null]
+  operator_id int [ref: > user.id, not null]
+  machine_id int [ref: > machine.id, not null]
+  record_date date
+  pieces_done int
+  stitch_count int
+  waste_type waste_type
+  waste_quantity int
+  notes text
+
+  created_at timestamp
+  updated_at timestamp
+}
+
+// Enums
+
+Enum order_status {
+  creada
+  en_produccion
+  finalizada
+  cancelada
+}
+
+Enum garment_provider {
+  cliente
+  taller
+}
+
+Enum logo_status {
+  nuevo
+  modificacion
+  existente
+  proporcionado
+}
+
+Enum user_role {
+  recepcion
+  operador
+  administrativo
+}
+
+Enum waste_type {
+  produccion
+  cliente
+}
+
+// Indexes
+
+Index on order { folio }
+Index on line_item { order_id }
+Index on production_record { line_item_id }
+Index on production_record { record_date }
+Index on production_record { operator_id }
+Index on production_record { machine_id }
+Index on logo { client_id }
