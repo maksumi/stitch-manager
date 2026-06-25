@@ -1,0 +1,25 @@
+{
+  "name": "stitch-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "setup": "node scripts/setup.js",
+    "start": "node scripts/setup.js && json-server --watch data/db.json --port 3000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.2.2",
+      "onFail": "download"
+    }
+  },
+  "type": "module",
+  "dependencies": {
+    "json-server": "1.0.0-beta.15"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "roles": [
+    { "id": 1, "name": "recepcion" },
+    { "id": 2, "name": "operador" },
+    { "id": 3, "name": "administrativo" }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "full_name": "Usuario Demo",
+      "phone": "3312345678",
+      "email": "demo@stitchmanager.com",
+      "password_hash": "demo_hash",
+      "role_id": 3,
+      "created_at": "2026-01-01T08:00:00Z",
+      "updated_at": "2026-01-01T08:00:00Z"
+    }
+  ],
+  "clients": [
+    {
+      "id": 1,
+      "name": "Cliente Demo",
+      "address": "Dirección demo",
+      "rfc": "DEMO123456XXX",
+      "phone": "3312345678",
+      "email": "cliente@demo.com",
+      "created_at": "2026-01-01T08:00:00Z",
+      "updated_at": "2026-01-01T08:00:00Z"
+    }
+  ],
+  "logos": [
+    {
+      "id": 1,
+      "client_id": 1,
+      "name": "Logo Demo",
+      "stitch_count": 5000,
+      "created_at": "2026-01-01T08:00:00Z",
+      "updated_at": "2026-01-01T08:00:00Z"
+    }
+  ],
+  "machines": [
+    { "id": 1, "name": "Barudan-01" },
+    { "id": 2, "name": "Barudan-02" },
+    { "id": 3, "name": "Barudan-03" },
+    { "id": 4, "name": "Barudan-04" }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "folio": 1001,
+      "client_id": 1,
+      "status": "creada",
+      "date_authorized": "2026-01-15",
+      "date_delivery": "2026-01-30",
+      "date_received": "2026-01-14",
+      "created_at": "2026-01-14T09:00:00Z",
+      "updated_at": "2026-01-14T09:00:00Z"
+    }
+  ],
+  "line_items": [
+    {
+      "id": 1,
+      "order_id": 1,
+      "logo_id": 1,
+      "garment_type": "Prenda demo",
+      "garment_provider": "cliente",
+      "garment_color": "Negro",
+      "quantity": 100,
+      "logo_status": "existente",
+      "logo_position": "Pecho Izquierdo",
+      "embroidery_color": "Blanco",
+      "embroidery_type": "Plano",
+      "notes": "",
+      "created_at": "2026-01-14T09:00:00Z",
+      "updated_at": "2026-01-14T09:00:00Z"
+    }
+  ],
+  "production_records": [
+    {
+      "id": 1,
+      "line_item_id": 1,
+      "operator_id": 1,
+      "machine_id": 1,
+      "record_date": "2026-01-20",
+      "pieces_done": 50,
+      "waste_type": "produccion",
+      "waste_quantity": 0,
+      "notes": "",
+      "created_at": "2026-01-20T12:00:00Z",
+      "updated_at": "2026-01-20T12:00:00Z"
+    }
+  ]
+}
